@@ -188,3 +188,21 @@ input:checked + .slider:before {
 .dark-mode #darkModeLabel {
     color: white;
 }
+.view-recipe-button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-recipe-button:hover {
+    background-color: #218838;
+}
+
