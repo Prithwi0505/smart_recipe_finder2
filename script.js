@@ -75,11 +75,6 @@ function findRecipes() {
 
 function displayRecipes(recipes) {
     let resultsContainer = document.getElementById("recipeResults");
-    if (!resultsContainer) {
-        console.error("Error: Results container not found!");
-        return;
-    }
-    
     resultsContainer.innerHTML = ""; // Clear previous results
 
     if (!recipes || recipes.length === 0) {
@@ -89,13 +84,19 @@ function displayRecipes(recipes) {
 
     recipes.forEach(recipe => {
         let recipeCard = document.createElement("div");
-        recipeCard.classList.add("card"); // 🔹 Ensure this matches CSS class
+        recipeCard.classList.add("recipe-card");
+
+        // Spoonacular provides recipe links via `spoonacularSourceUrl`
+        let recipeUrl = `https://spoonacular.com/recipes/${recipe.title.replace(/\s+/g, "-")}-${recipe.id}`;
 
         recipeCard.innerHTML = `
             <h3>${recipe.title}</h3>
             <img src="${recipe.image}" alt="${recipe.title}">
-            <p><strong>Used ingredients:</strong> ${recipe.usedIngredientCount}</p>
-            <p><strong>Missed ingredients:</strong> ${recipe.missedIngredientCount}</p>
+            <p>Used ingredients: ${recipe.usedIngredientCount}</p>
+            <p>Missed ingredients: ${recipe.missedIngredientCount}</p>
+            <a href="${recipeUrl}" target="_blank">
+                <button class="view-recipe-button">View Recipe</button>
+            </a>
         `;
 
         resultsContainer.appendChild(recipeCard);
