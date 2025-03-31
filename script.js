@@ -1,61 +1,23 @@
-const API_KEY = "857d4e224fe04375a097b49b7e1122f7";
+const API_KEY = "857d4e224fe04375a097b49b7e1122f7"; 
 
 async function findRecipes() {
-    const recipeResults = document.getElementById("recipeResults");
-    recipeResults.innerHTML = ""; // Clear previous results
-    recipeResults.style.display = "none"; // Hide initially
+    let ingredients = document.getElementById("ingredientInput").value.trim();
+    let diet = document.getElementById("dietFilter") ? document.getElementById("dietFilter").value : "";
 
-    const query = document.getElementById("ingredientInput").value.trim(); // Get user input
-
-    if (!query) {
-        alert("Please enter an ingredient.");
+    if (!ingredients) {
+        alert("❗ Please enter at least one ingredient!");
         return;
     }
 
-    const apiKey = "YOUR_ACTUAL_API_KEY"; // Replace with your actual key
-    const apiUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`;
-
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-
-        if (!data.meals) {
-            recipeResults.innerHTML = "<p>No recipes found. Try another keyword.</p>";
-            recipeResults.style.display = "block";
-            return;
-        }
-
-        recipeResults.style.display = "block"; // Show results
-        recipeResults.classList.add("has-content");
-
-        data.meals.forEach(meal => {
-            let recipeCard = document.createElement("div");
-            recipeCard.classList.add("card");
-            recipeCard.innerHTML = `
-                <h3>${meal.strMeal}</h3>
-                <img src="${meal.strMealThumb}" alt="${meal.strMeal}" width="150">
-                <p><a href="${meal.strYoutube}" target="_blank">Watch Recipe Video</a></p>
-            `;
-            recipeResults.appendChild(recipeCard);
-        });
-
-    } catch (error) {
-        console.error("Error fetching recipes:", error);
-        recipeResults.innerHTML = "<p>Something went wrong. Please try again later.</p>";
-        recipeResults.style.display = "block";
-    }
-}
-
-
     let url = `https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${ingredients}&diet=${diet}&number=6&addRecipeInformation=true&apiKey=${API_KEY}`;
 
-    console.log("📡 Fetching recipes from:", url); 
+    console.log("📡 Fetching recipes from:", url); // Debugging log
 
     try {
         let response = await fetch(url);
         let data = await response.json();
 
-        console.log("📜 API Response:", data); 
+        console.log("📜 API Response:", data); // Debugging log
 
         if (data.results && data.results.length > 0) {
             displayRecipes(data.results);
@@ -70,7 +32,7 @@ async function findRecipes() {
 
 function displayRecipes(recipes) {
     let recipeContainer = document.getElementById("recipeResults");
-    recipeContainer.innerHTML = "";
+    recipeContainer.innerHTML = ""; // Clear previous results
 
     recipes.forEach(recipe => {
         let recipeCard = document.createElement("div");
@@ -89,7 +51,6 @@ function displayRecipes(recipes) {
         recipeContainer.appendChild(recipeCard);
     });
 }
-
 
 const darkModeToggle = document.getElementById("darkModeToggle");
 
@@ -111,6 +72,5 @@ darkModeToggle.addEventListener("click", () => {
         darkModeToggle.textContent = "🌙 Dark Mode";
     }
 });
-
 
 
