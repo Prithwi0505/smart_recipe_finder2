@@ -104,4 +104,22 @@ body {
     background-color: #218838 !important;
 }
 
+input, select, textarea {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+
+.dark-mode input, 
+.dark-mode select, 
+.dark-mode textarea {
+    background-color: #ffffff !important;
+    color: #000000 !important; 
+    border: 1px solid #aaa; 
+}
+
+
 
