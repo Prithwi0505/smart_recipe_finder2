@@ -1,27 +1,38 @@
+const API_KEY = "857d4e224fe04375a097b49b7e1122f7";
+
 async function findRecipes() {
-    let ingredients = document.getElementById("ingredientInput").value;
-    let diet = document.getElementById("dietFilter").value;
-    
+    let ingredients = document.getElementById("ingredientInput").value.trim();
+    let diet = document.getElementById("dietFilter") ? document.getElementById("dietFilter").value : "";
+
     if (!ingredients) {
-        alert("Please enter at least one ingredient!");
+        alert("❗ Please enter at least one ingredient!");
         return;
     }
 
-    let apiKey = "857d4e224fe04375a097b49b7e1122f7";
-    let url = `https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${ingredients}&diet=${diet}&number=6&addRecipeInformation=true&apiKey=${apikey}`;
+    let url = `https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${ingredients}&diet=${diet}&number=6&addRecipeInformation=true&apiKey=${API_KEY}`;
+
+    console.log("📡 Fetching recipes from:", url); // Debugging log
 
     try {
         let response = await fetch(url);
         let data = await response.json();
-        displayRecipes(data.results);
+
+        console.log("📜 API Response:", data); // Debugging log
+
+        if (data.results && data.results.length > 0) {
+            displayRecipes(data.results);
+        } else {
+            alert("⚠️ No recipes found! Try different ingredients.");
+        }
     } catch (error) {
-        console.error("Error fetching recipes:", error);
+        console.error("❌ Error fetching recipes:", error);
+        alert("🚨 Failed to fetch recipes. Check your API Key and internet connection.");
     }
 }
 
 function displayRecipes(recipes) {
     let recipeContainer = document.getElementById("recipeResults");
-    recipeContainer.innerHTML = "";
+    recipeContainer.innerHTML = ""; // Clear previous results
 
     recipes.forEach(recipe => {
         let recipeCard = document.createElement("div");
@@ -33,23 +44,10 @@ function displayRecipes(recipes) {
                 <div class="card-body">
                     <h5 class="card-title">${recipe.title}</h5>
                     <a href="${recipe.sourceUrl}" target="_blank" class="btn btn-success">View Recipe</a>
-                    <button class="btn btn-outline-danger" onclick="saveFavorite('${recipe.id}', '${recipe.title}', '${recipe.image}', '${recipe.sourceUrl}')">❤️ Save</button>
                 </div>
             </div>
         `;
+
         recipeContainer.appendChild(recipeCard);
     });
-}
-
-function saveFavorite(id, title, image, url) {
-    let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    
-    let recipe = { id, title, image, url };
-    if (!favorites.some(r => r.id === id)) {
-        favorites.push(recipe);
-        localStorage.setItem("favorites", JSON.stringify(favorites));
-        alert("Recipe saved!");
-    } else {
-        alert("Already saved!");
-    }
 }
