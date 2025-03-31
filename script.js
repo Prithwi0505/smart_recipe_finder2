@@ -11,13 +11,13 @@ async function findRecipes() {
 
     let url = `https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${ingredients}&diet=${diet}&number=6&addRecipeInformation=true&apiKey=${API_KEY}`;
 
-    console.log("📡 Fetching recipes from:", url); // Debugging log
+    console.log("📡 Fetching recipes from:", url); 
 
     try {
         let response = await fetch(url);
         let data = await response.json();
 
-        console.log("📜 API Response:", data); // Debugging log
+        console.log("📜 API Response:", data); 
 
         if (data.results && data.results.length > 0) {
             displayRecipes(data.results);
@@ -32,7 +32,7 @@ async function findRecipes() {
 
 function displayRecipes(recipes) {
     let recipeContainer = document.getElementById("recipeResults");
-    recipeContainer.innerHTML = ""; // Clear previous results
+    recipeContainer.innerHTML = "";
 
     recipes.forEach(recipe => {
         let recipeCard = document.createElement("div");
@@ -73,5 +73,28 @@ darkModeToggle.addEventListener("click", () => {
         darkModeToggle.textContent = "🌙 Dark Mode";
     }
 });
+function findRecipes() {
+    const recipeResults = document.getElementById("recipeResults");
+    recipeResults.innerHTML = "";
+    recipeResults.classList.remove("has-content");
+
+
+    let recipes = []; 
+
+    if (recipes.length === 0) {
+        recipeResults.style.display = "none";
+        return;
+    }
+
+    recipeResults.style.display = "block";
+    recipeResults.classList.add("has-content");
+
+    recipes.forEach(recipe => {
+        let recipeCard = document.createElement("div");
+        recipeCard.classList.add("card");
+        recipeCard.innerHTML = `<h3>${recipe.name}</h3>`;
+        recipeResults.appendChild(recipeCard);
+    });
+}
 
 
