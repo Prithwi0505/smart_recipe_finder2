@@ -121,5 +121,24 @@ input, select, textarea {
     border: 1px solid #aaa; 
 }
 
+#recipeResults {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 50px; 
+    display: none; 
+}
+
+
+.dark-mode #recipeResults {
+    background-color: #202020;
+}
+
+
+#recipeResults.has-content {
+    display: block; 
+}
+
+
 
 
