@@ -73,28 +73,50 @@ darkModeToggle.addEventListener("click", () => {
         darkModeToggle.textContent = "🌙 Dark Mode";
     }
 });
-function findRecipes() {
+async function findRecipes() {
     const recipeResults = document.getElementById("recipeResults");
-    recipeResults.innerHTML = "";
-    recipeResults.classList.remove("has-content");
+    recipeResults.innerHTML = ""; // Clear previous results
+    recipeResults.style.display = "none"; // Hide initially
 
+    const query = document.getElementById("ingredientInput").value.trim(); // Get user input
 
-    let recipes = []; 
-
-    if (recipes.length === 0) {
-        recipeResults.style.display = "none";
+    if (!query) {
+        alert("Please enter at least one ingredient.");
         return;
     }
 
-    recipeResults.style.display = "block";
-    recipeResults.classList.add("has-content");
+    const apiKey = "YOUR_API_KEY"; // Replace with your actual API key
+    const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${query}`;
 
-    recipes.forEach(recipe => {
-        let recipeCard = document.createElement("div");
-        recipeCard.classList.add("card");
-        recipeCard.innerHTML = `<h3>${recipe.name}</h3>`;
-        recipeResults.appendChild(recipeCard);
-    });
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        if (!data.meals) {
+            recipeResults.innerHTML = "<p>No recipes found. Try different ingredients.</p>";
+            recipeResults.style.display = "block";
+            return;
+        }
+
+        recipeResults.style.display = "block"; // Show results
+        recipeResults.classList.add("has-content");
+
+        data.meals.forEach(meal => {
+            let recipeCard = document.createElement("div");
+            recipeCard.classList.add("card");
+            recipeCard.innerHTML = `
+                <h3>${meal.strMeal}</h3>
+                <img src="${meal.strMealThumb}" alt="${meal.strMeal}" width="150">
+            `;
+            recipeResults.appendChild(recipeCard);
+        });
+
+    } catch (error) {
+        console.error("Error fetching recipes:", error);
+        recipeResults.innerHTML = "<p>Something went wrong. Please try again later.</p>";
+        recipeResults.style.display = "block";
+    }
 }
+
 
 
