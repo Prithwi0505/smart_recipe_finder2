@@ -220,3 +220,11 @@ input:checked + .slider:before {
 .view-recipe-button:hover {
     background-color: #218838;
 }
+#title {
+    color: black; /* Title remains black */
+    font-size: 48px; /* Increased size */
+    font-weight: bold; /* Make it bold */
+    text-transform: uppercase; /* Optional: Makes text uppercase */
+    margin: 20px 0; /* Adds spacing */
+}
+
