@@ -26,10 +26,10 @@ body {
 }
 
 
-.dark-mode nav {
+/*.dark-mode nav {
     background-color: #202020;
     border-bottom: 1px solid #333;
-}
+}*/
 
 
 .dark-mode .card {
@@ -82,4 +82,26 @@ body {
 .dark-mode #darkModeToggle {
     background-color: #666;
 }
+
+#siteTitle {
+    color: black !important;
+}
+
+
+#findRecipesButton {
+    background-color: #28a745 !important; 
+    color: white !important; 
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+
+#findRecipesButton:hover {
+    background-color: #218838 !important;
+}
+
 
