@@ -1,9 +1,25 @@
-// 🔹 Toggle Dark Mode
+// 🔹 Toggle Dark Mode (with Slider)
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
     const darkModeEnabled = document.body.classList.contains("dark-mode");
-    localStorage.setItem("darkMode", darkModeEnabled); // Save preference
+    
+    // Save preference in localStorage
+    localStorage.setItem("darkMode", darkModeEnabled);
+
+    // Update slider position
+    document.getElementById("darkModeToggle").checked = darkModeEnabled;
 }
+
+// 🔹 Apply Dark Mode on Page Load
+window.onload = function () {
+    const darkModeEnabled = localStorage.getItem("darkMode") === "true";
+    
+    if (darkModeEnabled) {
+        document.body.classList.add("dark-mode");
+        document.getElementById("darkModeToggle").checked = true;
+    }
+};
+
 
 // 🔹 Apply Dark Mode on Page Load
 window.onload = function () {
