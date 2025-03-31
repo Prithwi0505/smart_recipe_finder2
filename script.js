@@ -52,7 +52,9 @@ function displayRecipes(recipes) {
     });
 }
 
+
 const darkModeToggle = document.getElementById("darkModeToggle");
+
 
 if (localStorage.getItem("darkMode") === "enabled") {
     document.body.classList.add("dark-mode");
@@ -71,4 +73,5 @@ darkModeToggle.addEventListener("click", () => {
         darkModeToggle.textContent = "🌙 Dark Mode";
     }
 });
+
 
