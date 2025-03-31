@@ -94,8 +94,8 @@ input {
 /* 🔹 Fancy Dark Mode Toggle (Slider) */
 .switch {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 50px;
+    right: 30px;
     display: inline-block;
     width: 50px;
     height: 26px;
