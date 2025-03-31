@@ -7,8 +7,8 @@ async function findRecipes() {
         return;
     }
 
-    let apiKey = "YOUR_SPOONACULAR_API_KEY";
-    let url = `https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${ingredients}&diet=${diet}&number=6&addRecipeInformation=true&apiKey=${857d4e224fe04375a097b49b7e1122f7}`;
+    let apiKey = "857d4e224fe04375a097b49b7e1122f7";
+    let url = `https://api.spoonacular.com/recipes/complexSearch?includeIngredients=${ingredients}&diet=${diet}&number=6&addRecipeInformation=true&apiKey=${apikey}`;
 
     try {
         let response = await fetch(url);
