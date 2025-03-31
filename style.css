@@ -11,7 +11,8 @@ h1 {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-/* 🔹 Light Mode (Default) */
+
+
 body {
     background-color: #ffffff;
     color: #000000;
@@ -20,15 +21,48 @@ body {
 
 
 .dark-mode {
-    background-color: #2e2e2e; 
-    color: #ffffff;
+    background-color: #181818; 
+    color: #e0e0e0; 
+}
+
+
+.dark-mode nav {
+    background-color: #202020;
+    border-bottom: 1px solid #333;
 }
 
 
 .dark-mode .card {
-    background-color: #3a3a3a; 
+    background-color: #282828; 
+    color: #ffffff;
+    border: 1px solid #444;
+}
+
+
+.dark-mode .btn {
+    background-color: #333;
     color: white;
     border: 1px solid #555;
+}
+
+.dark-mode .btn:hover {
+    background-color: #444;
+}
+
+
+.dark-mode input, 
+.dark-mode select, 
+.dark-mode textarea {
+    background-color: #222;
+    color: white;
+    border: 1px solid #555;
+}
+
+
+.dark-mode #recipeResults {
+    background-color: #202020;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 
@@ -46,6 +80,6 @@ body {
 }
 
 .dark-mode #darkModeToggle {
-    background-color: #666; 
+    background-color: #666;
 }
 
