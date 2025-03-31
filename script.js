@@ -23,15 +23,6 @@ window.onload = function () {
     }
 };
 
-
-
-// 🔹 Apply Dark Mode on Page Load
-window.onload = function () {
-    if (localStorage.getItem("darkMode") === "true") {
-        document.body.classList.add("dark-mode");
-    }
-};
-
 // 🔹 Fetch Recipes from API
 async function findRecipes() {
     const recipeResults = document.getElementById("recipeResults");
