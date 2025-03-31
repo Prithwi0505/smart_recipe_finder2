@@ -50,7 +50,7 @@ function findRecipes() {
 
     console.log("Searching recipes for:", ingredients);
 
-    let apiKey = "YOUR_API_KEY"; // 🔹 Replace with your valid API key
+    let apiKey = "857d4e224fe04375a097b49b7e1122f7"; // 🔹 Replace with your valid API key
     let apiUrl = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients}&number=5&apiKey=${apiKey}`;
 
     fetch(apiUrl)
