@@ -1,24 +1,28 @@
-// 🔹 Toggle Dark Mode (with Slider)
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
     const darkModeEnabled = document.body.classList.contains("dark-mode");
-    
+
     // Save preference in localStorage
     localStorage.setItem("darkMode", darkModeEnabled);
+
+    // Update label text
+    document.getElementById("darkModeLabel").textContent = darkModeEnabled ? "Dark Mode" : "Light Mode";
 
     // Update slider position
     document.getElementById("darkModeToggle").checked = darkModeEnabled;
 }
 
-// 🔹 Apply Dark Mode on Page Load
+// Apply Dark Mode on Page Load
 window.onload = function () {
     const darkModeEnabled = localStorage.getItem("darkMode") === "true";
     
     if (darkModeEnabled) {
         document.body.classList.add("dark-mode");
         document.getElementById("darkModeToggle").checked = true;
+        document.getElementById("darkModeLabel").textContent = "Dark Mode";
     }
 };
+
 
 
 // 🔹 Apply Dark Mode on Page Load
