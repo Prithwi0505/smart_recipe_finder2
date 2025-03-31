@@ -139,4 +139,33 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(24px);
 }
+/* Make input field full-width */
+#searchInput {
+    width: 100%; /* Full width of the screen */
+    max-width: 90%; /* Prevents overflow */
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    display: block; /* Ensures it takes up full line */
+    margin: 20px auto; /* Centers it horizontally */
+}
+
+/* Center the Find Recipes button below the input */
+#searchButton {
+    display: block;
+    margin: 10px auto; /* Centers it */
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#searchButton:hover {
+    background-color: darkgreen;
+}
 
