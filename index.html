@@ -12,8 +12,10 @@
     </header>
 
     <main>
-        <input type="text" id="ingredientInput" placeholder="Enter ingredients (e.g., chicken, rice)">
-        <button id="findRecipesButton" onclick="findRecipes()">Find Recipes</button>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Enter ingredients...">
+            <button id="searchButton" onclick="findRecipes()">Find Recipes</button>
+        </div>
 
         <div id="recipeResults"></div>
     </main>
