@@ -25,6 +25,11 @@ button {
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: darkgreen;
 }
 
 input {
@@ -65,7 +70,7 @@ input {
 }
 
 .dark-mode #title {
-    color: black;
+    color: white; /* Ensures visibility in dark mode */
 }
 
 .dark-mode #recipeResults {
@@ -78,24 +83,16 @@ input {
     background-color: white;
     color: black;
 }
-#darkModeToggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: green;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+
+.dark-mode .card {
+    background-color: #444; /* Darker background for recipe cards */
 }
+
 /* 🔹 Fancy Dark Mode Toggle (Slider) */
 .switch {
     position: fixed;
-    bottom: 50px;
-    right: 30px;
+    bottom: 20px;
+    right: 20px;
     display: inline-block;
     width: 50px;
     height: 26px;
@@ -139,19 +136,20 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(24px);
 }
-/* Make input field full-width */
+
+/* 🔹 Search Input Full Width */
 #searchInput {
     width: 100%; /* Full width of the screen */
-    max-width: 90%; /* Prevents overflow */
+    max-width: 600px; /* Adjusted for better responsiveness */
     padding: 12px;
     font-size: 16px;
     border: 2px solid #ccc;
     border-radius: 5px;
-    display: block; /* Ensures it takes up full line */
+    display: block;
     margin: 20px auto; /* Centers it horizontally */
 }
 
-/* Center the Find Recipes button below the input */
+/* 🔹 Center the Find Recipes Button */
 #searchButton {
     display: block;
     margin: 10px auto; /* Centers it */
@@ -168,14 +166,16 @@ input:checked + .slider:before {
 #searchButton:hover {
     background-color: darkgreen;
 }
-/* Dark Mode Toggle Container (Bottom-Right) */
+
+/* 🔹 Dark Mode Toggle Container (Bottom-Right) */
 .dark-mode-container {
     position: fixed;
-    bottom: 20px;
+    bottom: 50px; /* Adjusted for better placement */
     right: 20px;
     text-align: center;
 }
-/* Style for Dark Mode Label */
+
+/* 🔹 Style for Dark Mode Label */
 #darkModeLabel {
     display: block;
     font-size: 14px;
@@ -188,4 +188,3 @@ input:checked + .slider:before {
 .dark-mode #darkModeLabel {
     color: white;
 }
-
